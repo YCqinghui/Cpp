@@ -11,6 +11,9 @@ int main()
 
     int i = 100;
     int* i_ptr = &i;    // &i其实表示的就是i的内存地址，而这个表达的意思就是创建指针i_prt指向i的内存地址
+    // double i_ptr1 = &i   ⚠️，指针指向的对象和指针的数据类型必须相同
+
+    int* s,d;   // *是类型修饰符，只作用于后一个对象，这里只有s是指针，d是int
 
     // 由于指针本身指向的是地址，所以直接输出指针得到的是其指向的变量的地址
     // 如果想输出其指向的对象的值，需要将指针进行解引用
@@ -40,11 +43,18 @@ int main()
 
     std::cout << "\n5、空指针" << std::endl;
 
+    // 两种定义空指针的方式
     int* null_p = nullptr;
+    int* null_p1 = 0;
     if (null_p == nullptr)
     {
         std::cout << "\n指针可以为空" << std::endl;
     }
+    if (null_p1 == nullptr)
+    {
+        std::cout << "\n指针可以为空" << std::endl;
+    }
+
 
 
     std::cout << "\n==== 指针的分类 ====" << std::endl;
