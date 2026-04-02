@@ -4,7 +4,7 @@
 int main ()
 {
     // auto的含义
-    std::cout << "auto也就是让编译器自己推导该变量的类型,简化书写\n" << std::endl;
+    std::cout << "auto也就是让编译器自己推导该变量的类型,简化书写,但会有部分退化\n" << std::endl;
 
     // 实践
     auto a = 3;         // 推导为i，也就是int
@@ -73,7 +73,7 @@ int main ()
               << "\n要想保留,依旧得额外添加const"
               << std::endl;
     
-    const auto& rx2 = cr;
+    const auto& rx2 = cr;       // 这样才能保留
 
     // typeid在推导过程中也会忽略引用和顶层const，所以需要更换方式
     std::cout << "\nrx2是引用? " << std::is_reference<decltype(rx2)>::value << std::endl;
