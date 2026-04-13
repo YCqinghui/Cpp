@@ -54,6 +54,7 @@ int main()
     std::cout << "\ni1是不是const int : " << std::is_const<decltype(i1)>::value << std::endl;
 
     decltype(i + 1) i2;
+    
     // 顶层const进行四则运算后会删去顶层const
     std::cout << "\ni2是不是const int : " << std::is_const<decltype(i2)>::value << std::endl;
 
