@@ -42,12 +42,34 @@ int main()
     std::cin >> name;
     std::cout << "输入结果为 : " << name <<  std::endl;
 
-    // 整行读取，不受空格影响
+    // 整行读取，不受空格影响，但是不读取换行符，遇到换行符退出
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');     // 清除缓冲区残留
     std::cout << "请输入字符串 tandard library header file " << std::endl;
     std::getline(std::cin , name);
     std::cout << "输入结果为 : " << name << std::endl;
 
+    // 补充：逐个字符读取，不受空格、换行符影响，统计所有字符（用于char）
+    char ch;
+    int count = 0;
+    int space = 0;
+    while (std::cin.get(ch))
+    {
+        count++;
+        if (ch == '\n')     // 单个转义字符需要用单引号，不能用双引号
+        {
+            space++;
+            if (space == 2)
+            {
+                break;
+            }
+        }
+        else
+        {
+            space = 0;
+        }
+    }
+    std::cout << "输入字符数 : " << count << std::endl;
+    
     /*
         注意，如果同时用了cin和getline进行输入的话，会发生问题
         cin正常输入之后会在缓冲区留下一个换行符'\n'，如果接下来再用getline的话，就会直接读取这个换行符
