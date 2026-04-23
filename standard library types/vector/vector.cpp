@@ -85,7 +85,7 @@ int main()
     // 1、删除末尾元素
     v.pop_back();
 
-    // 2、删除指定位置元素
+    // 2、删除指定位置元素（括号里的值需要是迭代器或者索引）
     v.erase(v.begin());         // 删除v[0];
     v.erase(v.begin()+1);       // 删除v[1];
 
@@ -192,9 +192,11 @@ int main()
     }
     std::cout << std::endl;
 
+    std::sort(v.rbegin(),v.rend());     // 倒序排序
+    std::sort(v.begin(),v.end(),std::greater<int>());   // 同上，倒序排序
+
     // 反转
-    std::reverse(v.begin(),v.end()); // 顺序从大到小重新排序
-    std::cout << "倒序 : ";
+    std::reverse(v.begin(),v.end()); // 注：reverse是将当前vector中的排序直接倒过来，不会进行整理排序
     for (int& c : v)
     {
         std::cout << c << " ";
@@ -202,7 +204,7 @@ int main()
     std::cout << std::endl;
 
     // 查找
-    auto it = std::find(v.begin(),v.end(),3);
+    auto it = std::find(v.begin(),v.end(),3);       // 返回的int是迭代器
     if (it != v.end())
     {
         std::cout << "v中数字3的位置为 : " << (it - v.begin()) << std::endl;   // 也就是v[it - v.begin()] = 3
@@ -355,6 +357,5 @@ int main()
     // 如果不用引用的话，就要把原二维动态数组拷贝一遍，增大内存开销，而引用不会
     
     return 0;
-
 
 }
